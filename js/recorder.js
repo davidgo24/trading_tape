@@ -85,8 +85,15 @@ function downloadRecording() {
     const blob = new Blob(recordedChunks, { type: 'video/webm'});
     const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
+
+    //adding unique filename for every recording
+    const now = new Date();
+    const dateStr = `${now.getFullYear()}-${String(now.getMonth()+1).padStart(2,'0')}-${String(now.getDate()).padStart(2,'0')}`;
+    const timeStr = `${String(now.getHours()).padStart(2,'0')}${String(now.getMinutes()).padStart(2,'0')}`;
+    const filename = `trading-session-${dateStr}-${timeStr}.webm`;
+
     a.href = url;
-    a.download = 'trading-session.webm';
+    a.download = filename;
     document.body.appendChild(a);
     a.click();
     setTimeout(() => {
