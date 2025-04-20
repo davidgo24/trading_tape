@@ -1,0 +1,25 @@
+body {
+    font-family: Arial, sans-serif;
+    background: #f8f9fa;
+    text-align: center;
+    padding: 20px;
+}
+
+h1 {
+    margin-bottom: 20px;
+}
+
+.home-buttons a button, .record-controls button {
+    margin: 10px;
+    padding: 12px 24px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+video {
+    margin-top: 20px;
+    width: 80%;
+    max-width: 800px;
+    border: 2px solid #333;
+    border-radius: 8px;
+}
