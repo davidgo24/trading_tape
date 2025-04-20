@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>TradingTape - Record Session</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+    <h1>TradingTape 🎥 - Record</h1>
+
+    <div class="record-controls">
+        <button id="screenOnlyBtn">Record Screen Only</button>
+        <button id="screenWebcamBtn">Record Screen + Webcam</button>
+        <button id="stopBtn" disabled>Stop Recording</button>
+        <button id="downloadBtn" disabled>Download Recording</button>
+    </div>
+
+    <!-- shows the screen share, webcam feed combined during recording -->
+    <video id="preview" autoplay muted></video>
+
+    <!-- shows immediately when page loads, BEFORE recording -->
+    <video id ="liveWebcamPreview" autoplay muted style="width: 200px; position: fixed; bottom: 20px; left: 20px; border: 2px solid #333; border-radius: 8px;"></video>
+
+    <!-- Webcam preview DURING recording if Screen + Webcam -->
+    <video id="webcamPreview" autoplay muted style="width: 200px; position: fixed; bottom: 20px; right: 20px; border: 2px solid #333; border-radius: 8px; display: none;"></video>
+
+    <script src="js/recorder.js"></script>
+    <script src="js/webcam_preview.js"></script> <!--new script for webcam prev-->
+
+</body>
+
+</html>
