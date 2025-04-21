@@ -78,7 +78,21 @@ function stopRecording() {
     downloadBtn.disabled = false; // we want to allow user to download if they want
 
     //hide webcam preview after recording ends
-    webcamPreview.style.display = 'None';
+    webcamPreview.style.display = 'none';
+    
+    // fully stop the webcam stream once we stop the recording
+    const livePreview = document.getElementById('liveWebcamPreview');
+    if (livePreview && livePreview.srcObject) {
+        livePreview.srcObject.getTracks().forEach(track => track.stop());
+        livePreview.srcObject = null;
+    }
+
+    //also stop the recording webcam preview if it had its own stream
+    const recordingPreview = document.getElementById('webcamPreview');
+    if (recordingPreview && recordingPreview.srcObject){
+        recordingPreview.srcObject.getTracks().forEach(track => track.stop());
+        livePreview.srcObject = null;
+    }
 }
 
 function downloadRecording() {
@@ -86,19 +100,45 @@ function downloadRecording() {
     const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
 
-    //adding unique filename for every recording
+    //adding unique filename for every recording - left as is to create different file types with same name
     const now = new Date();
     const dateStr = `${now.getFullYear()}-${String(now.getMonth()+1).padStart(2,'0')}-${String(now.getDate()).padStart(2,'0')}`;
     const timeStr = `${String(now.getHours()).padStart(2,'0')}${String(now.getMinutes()).padStart(2,'0')}`;
-    const filename = `trading-session-${dateStr}-${timeStr}.webm`;
+    const baseFilename = `trading-session-${dateStr}-${timeStr}`;
 
     a.href = url;
-    a.download = filename;
+    a.download = `${baseFilename}.webm`;
     document.body.appendChild(a);
     a.click();
     setTimeout(() => {
         document.body.removeChild(a);
         window.URL.revokeObjectURL(url);
     }, 100);
-}
 
+    //prompt user for metadata
+
+    const title = window.prompt('Enter session title:', '4H Candlestick #4 pre-market to market open 30 (3-7AM PST)');
+    const strategy = window.prompt('Enter strategy focus:', 'pre-market head and shoulder break off of tapering channel with momentum at open');
+
+    if (title && strategy) {
+        const metadata = {
+            title: title,
+            strategy: strategy,
+            date: dateStr,
+            tags: [] //tags will be added later during replay phase
+        };
+
+        const metadataBlob = new Blob([JSON.stringify(metadata, null, 2)], { type: 'application/json' });
+        const metadataUrl = URL.createObjectURL(metadataBlob);
+        const metadataLink = document.createElement('a');
+        metadataLink.href = metadataUrl;
+        metadataLink.download = `${baseFilename}.json`;
+        document.body.appendChild(metadataLink);
+        metadataLink.click();
+        setTimeout(() => {
+            document.body.removeChild(metadataLink);
+            window.URL.revokeObjectURL(metadataUrl);
+        }, 100);
+
+    }
+}
