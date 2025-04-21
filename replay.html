@@ -4,12 +4,55 @@
     <meta charset="UTF-8">
     <title>TradingTape - Replay Sessions</title>
     <link rel="stylesheet" href="css/styles.css">
+    <meta charset="UTF-8">
+    <title>TradingTape - Replay Sessions</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <style>
+        /* centering the theatre */
+        body {
+            text-align: center;
+            font-family: Arial, sans-serif;
+        }
+        .replay-controls {
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+        #sessionDetails {
+            margin-top: 20px;
+            font-size: 16px;
+        }
+        #replayVideo {
+            margin-top: 20px;
+            width: 80%;
+            max-width: 800px;
+            border: 2px solid #333;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body>
 </head>
 <body>
 
-    <h1>TradingTape 🎥 - Replay</h1>
+    <h1>TradingTape 🎥 - Replay Your Sessions $$</h1>
 
-    <p>Loading... View and replay your trading sessions here!</p>
+    <div class="replay-controls">
+        <label for="metadataInput" style="display: block; margin-bottom: 5px; font-weight: bold;">Upload Session Metadata (.json)</label>
+        <input type="file" id="metadataInput" accept=".json">
+        <label for="videoInput" style="display: block; margin-bottom: 5px; font-weight: bold;">Upload Session Video (.webm)</label>
+        <input type="file" id="videoInput" accept="video/webm">
+    </div>
+
+    <!-- 👇 New: Centered session container -->
+    <div id="sessionContainer" style="max-width: 800px; margin: 0 auto; text-align: center;">
+
+        <div id="sessionDetails" style="margin-top: 20px; font-size: 16px;">
+            <!-- Metadata will be displayed here -->
+        </div>
+
+        <video id="replayVideo" controls style="margin-top: 20px; width: 100%; border: 2px solid #333; border-radius: 8px;"></video>
+
+    </div>
 
     <script src="js/replay.js"></script>
 </body>
