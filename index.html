@@ -1,24 +1,101 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>tradingTape Home</title>
-    <link rel="stylesheet" href="css/styles.css">
-    <script>
-        if (/Mobi|Android|iPhone/i.test(navigator.userAgent)) {
-          alert("TradingTape works best on desktop — screen recording is not supported on mobile browsers.\n\nGet off the damn phone if you tryna really make money.\nWeak ass mf trader 💀📉");
-        }
-      </script>
+  <meta charset="UTF-8">
+  <title>TradingTape 🎥</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #121212;
+      color: #f1f1f1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      margin: 0;
+      text-align: center;
+    }
 
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+    }
+
+    p.tagline {
+      font-size: 1.2rem;
+      color: #999;
+      margin-bottom: 25px;
+    }
+
+    img.screenshot {
+      max-width: 250px;
+      border-radius: 12px;
+      margin-bottom: 10px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.3);
+    }
+
+    p.caption {
+      font-size: 0.9rem;
+      color: #888;
+      margin-bottom: 35px;
+    }
+
+    .home-buttons {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-bottom: 40px;
+    }
+
+    .home-buttons a button {
+      padding: 12px 24px;
+      font-size: 1rem;
+      background-color: #1f1f1f;
+      color: #fff;
+      border: 1px solid #444;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.2s ease;
+    }
+
+    .home-buttons a button:hover {
+      background-color: #2e2e2e;
+    }
+
+    footer {
+      font-size: 0.8rem;
+      color: #666;
+      position: absolute;
+      bottom: 20px;
+    }
+  </style>
+
+  <!-- Mobile Roast  -->
+  <script>
+    if (/Mobi|Android|iPhone/i.test(navigator.userAgent)) {
+      alert("TradingTape works best on desktop — screen recording is not supported on mobile browsers.\n\nGet off the damn phone if you trying to really make money.\nWeak ass mf trader 💀📉");
+    }
+  </script>
 </head>
 <body>
 
-    <h1>TradingTape 🎥</h1>
+  <h1>TradingTape 🎥</h1>
+  <p class="tagline">Record. Reflect. Replay. Trade like an athlete.</p>
 
-    <div class="home-buttons">
-        <a href="record.html"><button>Start New Recording</button></a>
-        <a href="replay.html"><button>View Past Sessions</button></a>
-    </div>
+  <!-- Shaq Image -->
+  <img src="/images/shaqcamcorder.jpg" alt="Shaq Holding Camcorder" class="screenshot">
+  <p class="caption">Shaq on tape duty. You're next. 🎥</p>
+
+  <!-- 🎬 Buttons -->
+  <div class="home-buttons">
+    <a href="record.html"><button>🎬 Start New Recording</button></a>
+    <a href="replay.html"><button>📂 View Past Sessions</button></a>
+  </div>
+
+  <footer>Built by a real one. © 2025</footer>
 
 </body>
 </html>
